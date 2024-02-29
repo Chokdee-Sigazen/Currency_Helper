@@ -50,12 +50,14 @@ const handleClickScrollContact = () => {
 };
 
 const navigation = [
-  { name: "Home", href: "", current: true },
-  { name: "About me", href: handleClickScrollAboutMe, current: false },
-  { name: "Skill", href: handleClickScrollSkill, current: false },
-  { name: "Project", href: handleClickScrollProject, current: false },
-  { name: "Archive", href: handleClickScrollArchive, current: false },
+  { name: "Home", href: "", current: false },
+  {
+    name: "Currency Caculator",
+    href: handleClickScrollAboutMe,
+    current: false,
+  },
   { name: "Contact me", href: handleClickScrollContactMe, current: false },
+  { name: "Sign in ", href: null, current: true },
 ];
 
 function classNames(...classes: any) {
@@ -92,7 +94,7 @@ export default function NavBar() {
                           onClick={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-[#7B6ABF] text-white"
+                              ? "bg-[#7B6ABF] text-white hover:bg-[#584c88]"
                               : "text-gray-300 hover:text-white hover:bg-[#433969]",
                             "rounded-md px-3 py-2 text-sm font-medium transition-all duration-150"
                           )}
