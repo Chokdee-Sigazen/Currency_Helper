@@ -1,40 +1,8 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const handleClickScrollAboutMe = () => {
-  const element = document.getElementById("aboutme");
-  if (element) {
-    // 👇 Will scroll smoothly to the top of the next section
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-const handleClickScrollArchive = () => {
-  const element = document.getElementById("Archive");
-  if (element) {
-    // 👇 Will scroll smoothly to the top of the next section
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-const handleClickScrollContactMe = () => {
-  const element = document.getElementById("ContactMe");
-  if (element) {
-    // 👇 Will scroll smoothly to the top of the next section
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-const handleClickScrollSkill = () => {
-  const element = document.getElementById("skill");
-  if (element) {
-    // 👇 Will scroll smoothly to the top of the next section
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
-const handleClickScrollProject = () => {
-  const element = document.getElementById("project");
+const handleClickScrollCal = () => {
+  const element = document.getElementById("Cal");
   if (element) {
     // 👇 Will scroll smoothly to the top of the next section
     element.scrollIntoView({ behavior: "smooth" });
@@ -53,10 +21,10 @@ const navigation = [
   { name: "Home", href: "", current: false },
   {
     name: "Currency Caculator",
-    href: handleClickScrollAboutMe,
+    href: handleClickScrollCal,
     current: false,
   },
-  { name: "Contact me", href: handleClickScrollContactMe, current: false },
+  { name: "Contact me", href: handleClickScrollContact, current: false },
   { name: "Sign in ", href: null, current: true },
 ];
 
