@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://www.w3schools.com/howto/tryit.asp?font=Outfit");
 
 :root {
   --foreground-rgb: 0, 0, 0;
