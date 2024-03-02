@@ -1,20 +1,38 @@
+"use client";
+
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
-const people = [
-  { id: 1, name: "Thai Bath" },
-  { id: 2, name: "United State Dollar" },
-  { id: 3, name: "Devon Webb" },
-  { id: 4, name: "Tom Cook" },
-  { id: 5, name: "Tanya Fox" },
-  { id: 6, name: "Hellen Schmidt" },
-];
+type require = {
+  people: { name: String; id: any }[];
+  selected: any;
+  selected2: any;
+  setSelected: any;
+  setNumberCal: any;
+  data: { name: string; value: number }[];
+  number: any;
+};
 
-export default function ComboBox() {
-  const [selected, setSelected] = useState(people[0]);
+function findValue(data_arr: { name: String; value: number }[], name: String) {
+  for (const item of data_arr) {
+    if (item.name === name) {
+      return item.value;
+    }
+  }
+  return 0; // Return 0 if not found
+}
+
+export default function ComboBox({
+  setNumberCal,
+  people,
+  selected,
+  setSelected,
+  selected2,
+  data,
+  number,
+}: require) {
   const [query, setQuery] = useState("");
-
   const filteredPeople =
     query === ""
       ? people
@@ -26,18 +44,38 @@ export default function ComboBox() {
         );
 
   return (
-    <div className=" top-16 w-72 mx-4">
-      <Combobox value={selected} onChange={setSelected}>
+    <div className=" w-72 mx-4">
+      <Combobox
+        value={selected}
+        onChange={(event) => {
+          console.log(number);
+          setSelected(event);
+          console.log(event.name);
+          if (number == 1) {
+            setNumberCal(
+              findValue(data, selected2.name.split("(")[1].substring(0, 3)) /
+                findValue(data, event.name.split("(")[1].substring(0, 3))
+            );
+          } else {
+            setNumberCal(
+              findValue(data, event.name.split("(")[1].substring(0, 3)) /
+                findValue(data, selected2.name.split("(")[1].substring(0, 3))
+            );
+          }
+        }}
+      >
         <div className="relative">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-black text-left shadow-md focus:outline-none focus-visible:ring-2 ">
             <Combobox.Input
-              className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-white font-bold font-outfit focus:ring-0 bg-[#7875B4]"
+              className=" z-10 w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-white font-bold font-outfit focus:ring-0 bg-[#7875B4]"
               displayValue={(person: any) => person.name}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                setQuery(event.target.value);
+              }}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
-                className="h-5 w-5 text-gray-400"
+                className="h-5 w-5 text-[#252439]"
                 aria-hidden="true"
               />
             </Combobox.Button>
@@ -49,7 +87,7 @@ export default function ComboBox() {
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#8f8bd5] py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-[#8f8bd5] py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {filteredPeople.length === 0 && query !== "" ? (
                 <div className="relative cursor-default select-none px-4 py-2 text-white font-bold font-outfit">
                   Nothing found.

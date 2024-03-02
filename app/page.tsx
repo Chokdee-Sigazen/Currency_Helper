@@ -1,12 +1,10 @@
-"use client";
-
 import ComboBox from "@/components/ComboBox";
-import HistoryPage from "@/components/HistoryPage";
 import InputNumber from "@/components/InputNumber";
 import NavBar from "@/components/NavBar";
 import Title from "@/components/Title";
 import Footer from "@/components/Footer";
-import Image from "next/image";
+import ListHistory from "@/components/ListHistory";
+import Calculator from "@/components/Calculator";
 
 const topic = [
   {
@@ -31,7 +29,18 @@ const topic = [
   },
 ];
 
-export default function Home() {
+async function getDataLatest() {
+  const res = await fetch("https://www.frankfurter.app/latest");
+  const data = await res.json();
+  const data_arr: { name: string; value: number }[] = [];
+  Object.keys(data.rates).forEach((key) =>
+    data_arr.push({ name: key, value: data.rates[key] })
+  );
+  return data_arr;
+}
+
+export default async function Home() {
+  const value = await getDataLatest();
   return (
     <div className=" bg-[#252439] w-full h-auto overflow-hidden">
       <div className="bg-[url('/pic/bg.png')] bg-cover bg-center bg-no-repeat">
@@ -62,7 +71,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <div className="bg-[#3B395C] min-h-[45vh] py-4">
         <div className="w-[85%] mx-auto min-h-[40vh] flex flex-col justify-center">
           <div className="flex w-full justify-center">
@@ -79,47 +87,8 @@ export default function Home() {
       </div>
       <div className="min-h-[100vh] mt-5 mb-20">
         <div className="flex flex-col max-w-[85%] h-full mx-auto" id="Cal">
-          <div className="flex flex-col my-2 mt-4 h-auto ">
-            <span className="text-[20px] text-[#C1C1C1]">
-              1 Thai Bath Equals
-            </span>
-            <h1 className="font-bold font-outfit text-[40px]">
-              0.0279 United State Dollar
-            </h1>
-          </div>
-          <div className="flex h-auto">
-            <div className="w-auto flex flex-col">
-              <div className="flex">
-                <InputNumber></InputNumber>
-                <ComboBox></ComboBox>
-              </div>
-              <div className="flex my-4">
-                <InputNumber></InputNumber>
-                <ComboBox></ComboBox>
-              </div>
-            </div>
-            <div className="w-full h-[35vh] bg-gradient-to-b from-[#4E416C] to-[#8C69D8] rounded-lg"></div>
-          </div>
-          <div className="mx-auto w-full my-5">
-            <HistoryPage
-              index={0}
-              number={35}
-              from={"Thai Bath"}
-              to={"United State Dollars"}
-            ></HistoryPage>
-            <HistoryPage
-              index={1}
-              number={35}
-              from={"Thai Bath"}
-              to={"United State Dollars"}
-            ></HistoryPage>
-            <HistoryPage
-              index={2}
-              number={35}
-              from={"Thai Bath"}
-              to={"United State Dollars"}
-            ></HistoryPage>
-          </div>
+          <Calculator data={value}></Calculator>
+          <ListHistory></ListHistory>
           <button className="h-6 w-20 bg-[#9994E7] font-bold text-[17px] text-[#23213D] my-4 rounded-md mx-auto">
             More
           </button>
