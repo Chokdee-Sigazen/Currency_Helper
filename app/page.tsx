@@ -5,6 +5,7 @@ import Title from "@/components/Title";
 import Footer from "@/components/Footer";
 import ListHistory from "@/components/ListHistory";
 import Calculator from "@/components/Calculator";
+import { ButtonStart } from "@/components/ButtonStart";
 
 const topic = [
   {
@@ -41,8 +42,9 @@ async function getDataLatest() {
 
 export default async function Home() {
   const value = await getDataLatest();
+
   return (
-    <div className=" bg-[#252439] w-full h-auto overflow-hidden">
+    <div id="Home" className=" bg-[#252439] w-full h-auto overflow-hidden">
       <div className="bg-[url('/pic/bg.png')] bg-cover bg-center bg-no-repeat">
         <div className="w-[85%] mx-auto ">
           <NavBar></NavBar>
@@ -56,15 +58,7 @@ export default async function Home() {
                   Get real-time exchange rates and manage your <br></br>
                   personalized watchlist.
                 </span>
-                <div className="flex my-5">
-                  <div className=" w-36 h-12 bg-[#4797C0] rounded-lg mr-4 font-bold flex-col justify-center flex hover:bg-[#397D9F] transition-all duration-200">
-                    <span className=" text-[20px] text-center">Get Start</span>
-                  </div>
-                  <div className=" w-36 h-12 bg-[#6D42CA] rounded-lg mr-4 font-bold  justify-center flex hover:bg-[#513197] transition-all duration-200 ">
-                    <span className=" text-[20px] my-auto mr-2">Discord</span>
-                    <div className=" w-6 h-6 bg-[url('/pic/github.png')] bg-center bg-cover rounded-full my-auto"></div>
-                  </div>
-                </div>
+                <ButtonStart></ButtonStart>
               </div>
               <div className=" h-full w-[40%] bg-[url('/pic/computer1.png')] bg-center b-cover"></div>
             </div>

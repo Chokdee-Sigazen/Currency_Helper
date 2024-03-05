@@ -3,10 +3,37 @@
 import { useState } from "react";
 import ComboBox from "./ComboBox";
 import InputNumber from "./InputNumber";
-
 const people = [
   { id: 1, name: "Thai Bath (THB)" },
   { id: 2, name: "United State Dollar (USD)" },
+  { id: 3, name: "Australian Dollar (AUD)" },
+  { id: 4, name: "Bulgarian Lev (BGN)" },
+  { id: 5, name: "Brazilian Real (BRL)" },
+  { id: 6, name: "Canadian Dollar (CAD)" },
+  { id: 7, name: "Swiss Franc (CHF)" },
+  { id: 8, name: "Chinese Yuan (CNY)" },
+  { id: 9, name: "Czech Koruna (CZK)" },
+  { id: 10, name: "Danish Krone (DKK)" },
+  { id: 11, name: "British Pound (GBP)" },
+  { id: 12, name: "Hong Kong Dollar (HKD)" },
+  { id: 13, name: "Hungarian Forint (HUF)" },
+  { id: 14, name: "Indonesian Rupiah (IDR)" },
+  { id: 15, name: "Israeli New Shekel (ILS)" },
+  { id: 16, name: "Indian Rupee (INR)" },
+  { id: 17, name: "Icelandic Krona (ISK)" },
+  { id: 18, name: "Japanese Yen (JPY)" },
+  { id: 19, name: "South Korean Won (KRW)" },
+  { id: 20, name: "Mexican Peso (MXN)" },
+  { id: 21, name: "Malaysian Ringgit (MYR)" },
+  { id: 22, name: "Norwegian Krone (NOK)" },
+  { id: 23, name: "New Zealand Dollar (NZD)" },
+  { id: 24, name: "Philippine Peso (PHP)" },
+  { id: 25, name: "Polish Zloty (PLN)" },
+  { id: 26, name: "Romanian Leu (RON)" },
+  { id: 27, name: "Swedish Krona (SEK)" },
+  { id: 28, name: "Singapore Dollar (SGD)" },
+  { id: 29, name: "Turkish Lira (TRY)" },
+  { id: 30, name: "South African Rand (ZAR)" },
 ];
 
 type Data = {
