@@ -13,6 +13,7 @@ export function SignIn_Popup({ trigger, setClosed }: Props) {
         trigger ? "opacity-100" : "opacity-0 invisible"
       }`}
     >
+        
       <div className=" fixed min-h-[100vh] opacity-50 left-0 top-0 z-30 min-w-full bg-black "></div>
       <div className="flex left-0 right-0 h-full w-full justify-center items-center  fixed z-40 inset-0">
         <div className=" w-[85%] h-[80%] bg-gradient-to-r from-[#AAA1CD] to-[#46417a] z-40 rounded-lg  text-black">
