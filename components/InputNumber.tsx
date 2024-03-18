@@ -2,7 +2,7 @@ type Input = {
   setValue: any;
   value: number;
   num_cal: number;
-  setValueAnother: any;
+  setValueAnother: Function;
   number: any;
 };
 
@@ -21,10 +21,10 @@ export default function InputNumber({
           setValue(event.target.value);
           console.log(event.target.value);
           if (number == 1) {
-            setValueAnother(num_cal * event.target.value);
+            setValueAnother(num_cal * Number(event.target.value));
           }
           if (number == 2) {
-            setValueAnother((1 / num_cal) * event.target.value);
+            setValueAnother((1 / num_cal) * Number(event.target.value));
           }
         }}
         placeholder="1"
