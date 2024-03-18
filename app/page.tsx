@@ -82,10 +82,6 @@ export default async function Home() {
       <div className="min-h-[100vh] mt-5 mb-20">
         <div className="flex flex-col max-w-[85%] h-full mx-auto" id="Cal">
           <Calculator data={value}></Calculator>
-          <ListHistory></ListHistory>
-          <button className="h-6 w-20 bg-[#9994E7] font-bold text-[17px] text-[#23213D] my-4 rounded-md mx-auto">
-            More
-          </button>
         </div>
       </div>
       <div id="contact">

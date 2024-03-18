@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ComboBox from "./ComboBox";
 import InputNumber from "./InputNumber";
+import ListHistory from "./ListHistory";
 const people = [
   { id: 1, name: "Thai Bath (THB)" },
   { id: 2, name: "United State Dollar (USD)" },
@@ -110,6 +111,10 @@ export default function Calculator({ data }: Data) {
         </div>
         <div className="w-full h-[35vh] bg-gradient-to-b from-[#4E416C] to-[#8C69D8] rounded-lg"></div>
       </div>
+      <ListHistory></ListHistory>
+      <button className="h-6 w-20 bg-[#9994E7] font-bold text-[17px] text-[#23213D] my-4 rounded-md mx-auto">
+        More
+      </button>
     </>
   );
 }

@@ -1,25 +1,57 @@
+"use client";
+import { motion } from "framer-motion";
+
 type History = {
   index: number;
   from: String;
   to: String;
   number: number;
+  selected: number;
+  setSelected: Function;
 };
 
-export default function HistoryPage({ index, from, to, number }: History) {
+export default function HistoryPage({
+  index,
+  from,
+  to,
+  number,
+  selected,
+  setSelected,
+}: History) {
   return (
     <>
-      <div
-        className={`h-36 rounded-lg  my-3 w-full ${
-          index % 2 == 0 ? "bg-[#9894E4]" : "bg-[#94C3E4]"
+      <motion.div
+        onClick={() => {
+          if (selected == index) {
+            return setSelected(-1);
+          }
+          setSelected(index);
+        }}
+        className={`h-36 rounded-lg  my-3 w-full bg-size-200 duration-200 hover:scale-[1.03] transition-all  ${
+          index % 2 == 0
+            ? "bg-[#D5C2FF] via-[#9894E4]"
+            : "via-[#94C3E4] bg-[#A7FAFF]"
         }  ${
           index % 2 == 0
             ? "bg-gradient-to-r from-[#434163] "
             : "bg-gradient-to-r from-[#526C7E] "
-        }}`}
+        }} ${selected == index ? " bg-pos-100" : " bg-pos-0"}`}
       >
-        <div className="flex flex-col h-full w-full mx-5">
+        <div
+          className={`flex flex-col h-full w-full mx-5 ${
+            selected == index
+              ? `${index % 2 == 0 ? "text-[#383652]" : "text-[#364A58]"}`
+              : "text-white"
+          }`}
+        >
           <div className="flex flex-col my-2 h-auto justify-start ">
-            <span className="text-[10px] text-[#C1C1C1]">
+            <span
+              className={`text-[14px]  ${
+                selected == index
+                  ? `${index % 2 == 0 ? "text-[#504E75]" : "text-[#4A6C84]"}`
+                  : "text-[#C1C1C1]"
+              }`}
+            >
               1 Thai Bath Equals
             </span>
             <h1 className="font-bold font-outfit text-[30px]">
@@ -51,7 +83,7 @@ export default function HistoryPage({ index, from, to, number }: History) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
